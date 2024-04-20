@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Loading Buttons</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for centering loader */
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Add margin to buttons */
+        .loader-container .btn {
+            margin: 0 2px; /* Adjust margin as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <button class="btn btn-primary ml-2" type="button" disabled>
+            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+            <span class="sr-only">Loading...</span>
+        </button>
+        <button class="btn btn-primary" type="button" disabled> 
+            Loading...
+        </button>
+        <button class="btn btn-primary mr-2" type="button" disabled>
+            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+            <span class="sr-only">Loading...</span>
+        </button>
+    </div>
+
+    <!-- Your content -->
+    <div class="container">
+        <h1>Welcome to My Website</h1>
+        <!-- Add more content here -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Example of simulating loading
+        $(document).ready(function() {
+            // Simulate loading by disabling buttons and showing spinners
+            $('.btn').click(function() {
+                $(this).prop('disabled', true);
+                $(this).find('.spinner-grow').addClass('d-inline-block');
+                $(this).find('.sr-only').text('Loading...');
+            });
+        });
+    </script>
+
+<script>
+    // Hide loader when page is fully loaded
+    $(window).on('load', function () {
+        $('.loader-container').fadeOut('slow');
+    });
+</script>
+</body>
+</html>
